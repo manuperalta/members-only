@@ -1,0 +1,11 @@
+extends layout 
+block content
+    h2 ADMIN PRIVILEGES
+    form(method='POST' action='')
+        div.form-group
+            label(for='adminpassword') ADMIN PASSWORD:
+            input#adminpassword.form-control(type='text' placeholder="Hint: it's Tolkien's heaviest and hardest to read book" name='adminpassword' required='true')
+        button.btn.btn-primary(type='submit') Submit
+    if error
+        ul.text-danger
+            li!= error

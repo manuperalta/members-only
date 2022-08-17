@@ -1,0 +1,12 @@
+extends layout
+block content
+    h2 Log in
+    p Use your email address to log in.
+    form(method='POST' action='')
+        div.form-group
+            label(for='username') E-mail:
+            input#username.form-control(type='text' placeholder='email' name='username' required='true')
+        div.form-group
+            label(for='password') Password:
+            input#password.form-control(type='text' placeholder='Password' name='password' required='true')
+        button.btn.btn-primary(type='submit') Submit

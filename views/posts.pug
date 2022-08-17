@@ -1,0 +1,30 @@
+extends layout 
+block content
+    if(posts.length == 0)
+        h1 No posts over here!
+    else
+        h1 Posts
+        for post in posts
+            hr
+            div.postContainer
+                p.lead.postTitle #{post.title}
+                if (user&&user.isMember)
+                    p.username= 'Posted by '+ post.user.fullname
+                else
+                    p You need to be a member to see who posted this.
+                p.postContent #{post.content}
+                p.postTimestamp Posted #{post.dateTime} (#{post.relativeDate})
+                if(user)
+                    if(user.isAdmin || post.user.username === user.username)
+                        form(method='POST' action=post.url+'/delete')
+                            input#post.form-control(type='hidden' name='postid' required='true', value=post.id)
+                            button.btn.btn-danger Delete Post
+    if(user)
+        hr
+        form(method='POST' action='')
+            div#newpost.form-group
+                label(for='title') Post Title
+                input#title.form-control(type='text' placeholder='Write a title' name='title' required='true')
+                label(for = 'newpost') Create a new Post!
+                textarea#newpostcontent.form-control(rows='3' placeholder='Write your post!' name='newpost' required='true')
+            button.btn.btn-primary(type='submit') Submit

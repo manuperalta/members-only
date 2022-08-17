@@ -1,0 +1,12 @@
+extends layout 
+block content
+    h2 Join the club.
+    form(method='POST' action='')
+        div.form-group
+            label(for='secretpassword') Enter the secret password:
+            input#secretpassword.form-control(type='text' placeholder='Hint: it\'s a Lord of the Rings reference.' name='secretpassword' required='true')
+        button.btn.btn-primary(type='submit') Submit
+    if error
+        ul.text-danger
+            li!= error
+
