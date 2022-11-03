@@ -9,12 +9,24 @@ const User = require('../models/user');
 
 //GET posts JSON
 
-router.get('/posts/', (req, res, next) => {
+router.get('/posts', (req, res, next) => {
     Post
         .find()
         .exec((err, result) => {
             if (err) return next(err);
             res.json({ posts: result })
+        })
+})
+
+//GET a list of users' non-sensitive information
+
+router.get('/users', (req, res, next) => {
+    User
+        .find()
+        .select('username firstname lastname')
+        .exec((err, result) => {
+            if (err) return next(err);
+            res.json({ users: result })
         })
 })
 

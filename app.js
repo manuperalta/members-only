@@ -24,7 +24,12 @@ const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts')
 const apiRouter = require('./routes/api')
 
+
 const app = express();
+
+//Enabling Cross-origin resource sharing
+const cors = require('cors')
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
